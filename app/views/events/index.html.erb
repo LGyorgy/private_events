@@ -1,0 +1,6 @@
+<h1>Upcoming events from all users</h1>
+<% @events.each do |event| %>
+  <ul>
+    <li><%= "#{event.date}: " %><%= link_to "#{event.title}", event_path(event) %><%= " at #{event.location} by " %><%= link_to "#{event.creator.name}", user_path(event.creator) %></li>
+  </ul>
+<% end %>

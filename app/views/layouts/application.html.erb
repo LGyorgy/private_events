@@ -10,12 +10,23 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      Logged in as: <%= link_to @current_user.name, user_path(current_user) %>
-      <%= link_to ' (log out)', logout_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Log in', login_path %> or <%= link_to 'Create a new user', new_user_path %>
+    <% if flash.any? %>
+      <div class="flash-display">
+        <% flash.each do |type, msg| %>
+          <li><%= "#{type.to_s.upcase}: #{msg}" %></li>
+        <% end %>
+      </div>
     <% end %>
+    
+    <div class="login-bar">
+      <% if logged_in? %>
+        Logged in as: <%= link_to @current_user.name, user_path(current_user) %>
+        <%= link_to ' (log out)', logout_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Log in', login_path %> or <%= link_to 'Create a new user', new_user_path %>
+      <% end %>
+    </div>
+    <%= link_to "All Events", root_path %>
     <%= yield %>
   </body>
 </html>

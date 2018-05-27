@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(user)
     else
       flash.now[:error] = "No such user"
+      render 'new'
     end
   end
 

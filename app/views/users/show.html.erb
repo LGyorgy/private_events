@@ -1,3 +1,16 @@
 <h1><%= @user.name %></h1>
 User name: <%= @user.name %><br>
 E-mail address: <%= @user.email %><br>
+<div class="events">
+  <h2><%= "Upcoming events created by #{@user.name}:" %></h2>
+  <% if @user.events.any? %>
+    <% @user.events.each do |event| %>
+      <ul>
+        <li><%= "#{event.date}: " %><%= link_to "#{event.title}", event_path(event) %><%= " at #{event.location}" %></li>
+      </ul>
+    <% end %>
+  <% else %>
+    <p><%= "No upcoming events by #{@user.name}" %></p>
+  <% end %>
+</div>
+<%= link_to "Create a new Event", new_event_path %>

@@ -14,6 +14,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = "Non-existent user profile"
+      redirect_to root_url
   end
 
   private
