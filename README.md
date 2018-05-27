@@ -1,24 +1,12 @@
-# README
+This is a project for The Odin Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations
 
-Things you may want to cover:
+##Ruby on Rails
+##Project: Associations
 
-* Ruby version
+#Project 2: Private Events
 
-* System dependencies
+"You want to build a site similar to a private Eventbrite which allows users to create events and then manage user signups. Users can create events and send invitations and parties (sound familiar?). Events take place at a specific date and at a location (which you can just store as a string, like “Andy’s House”).
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A user can create events. A user can attend many events. An event can be attended by many users. This will require you to model many-to-many relationships and also to be very conscious about your foreign keys and class names (hint: you won’t be able to just rely on Rails’ defaults like you have before)."

@@ -10,6 +10,12 @@
   </head>
 
   <body>
+    <% if logged_in? %>
+      Logged in as: <%= link_to @current_user.name, user_path(current_user) %>
+      <%= link_to ' (log out)', logout_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Log in', login_path %> or <%= link_to 'Create a new user', new_user_path %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
