@@ -1,6 +1,5 @@
 <h1>Upcoming events from all users</h1>
-<% @events.each do |event| %>
-  <ul>
-    <li><%= "#{event.date}: " %><%= link_to "#{event.title}", event_path(event) %><%= " at #{event.location} by " %><%= link_to "#{event.creator.name}", user_path(event.creator) %></li>
-  </ul>
-<% end %>
+<%= render partial: 'shared/event_list', locals: { events: @future_events} %>
+<h2>Past events from all users</h2>
+<%= render partial: 'shared/event_list', locals: { events: @past_events} %>
+  

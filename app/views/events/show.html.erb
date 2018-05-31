@@ -1,1 +1,20 @@
-<%= "Event created by: #{@event.creator.name}" %>
+<h1><%= @event.title %></h1>
+<% if current_user == @event.creator %>
+  <%= link_to "Invite a User" , "#" %>
+<% end %>
+<p>Location: <%= @event.location %></p>
+<p>Date: <%= @event.date %></p>
+<p>Description: <%= @event.description %></p>
+<p>
+  <%= "Event created by: " %>
+  <%= link_to @event.creator.name, user_path(@event.creator) %>
+<h2>Attendees:</h2>
+<% if @event.attendees.any? %>
+  <ul>
+    <% @event.attendees.each do |attendee| %>
+      <li><%= link_to attendee.name, user_path(attendee) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  No attendees yet :(
+<% end %>

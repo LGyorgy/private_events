@@ -20,13 +20,17 @@
     
     <div class="login-bar">
       <% if logged_in? %>
-        Logged in as: <%= link_to @current_user.name, user_path(current_user) %>
+        Logged in as: <%= link_to current_user.name, user_path(current_user) %>
         <%= link_to ' (log out)', logout_path, method: :delete %>
       <% else %>
         <%= link_to 'Log in', login_path %> or <%= link_to 'Create a new user', new_user_path %>
       <% end %>
     </div>
     <%= link_to "All Events", root_path %>
+    <% if logged_in? %>
+      <%= " | " %> 
+      <%= link_to 'Create a new Event', new_event_path %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -24,13 +24,13 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = Event.all
+    @past_events   = Event.past
+    @future_events = Event.future
   end
 
   private
 
     def event_params
-      params[:event][:date] = Time.now
       params.require(:event).permit(:description, :date, :location, :title)
     end
 end

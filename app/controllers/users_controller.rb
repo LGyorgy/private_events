@@ -13,7 +13,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user            = User.find(params[:id])
+    @upcoming_events = @user.upcoming_events
+    @previous_events = @user.previous_events
+    @attended_events = @user.attended_events
     rescue ActiveRecord::RecordNotFound
       flash[:error] = "Non-existent user profile"
       redirect_to root_url
