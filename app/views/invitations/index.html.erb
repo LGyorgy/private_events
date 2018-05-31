@@ -1,0 +1,9 @@
+<% if @invitations.any? %>
+  <ul>
+  <% @invitations.each do |invitation| %>
+    <li><%= link_to invitation.inviter.name, user_path(invitation.inviter) %> has invited you to <%= link_to invitation.event.title, event_path(invitation.event) %> | <%= link_to "Accept", accept_invitation_path(invitation.id) %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p> You have no invitations right now... </p>
+<% end %>

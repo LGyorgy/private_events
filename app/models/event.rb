@@ -4,6 +4,9 @@ class Event < ApplicationRecord
   has_many :attendances, foreign_key: 'attended_event_id'
   has_many :attendees, through: :attendances
 
+  has_many :invitations
+  has_many :invited_users, through: :invitations
+
   default_scope { order(date: :desc) }
 
   scope :past,     -> { where('date < ?', Time.now) }

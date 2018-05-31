@@ -26,11 +26,15 @@
         <%= link_to 'Log in', login_path %> or <%= link_to 'Create a new user', new_user_path %>
       <% end %>
     </div>
-    <%= link_to "All Events", root_path %>
-    <% if logged_in? %>
-      <%= " | " %> 
-      <%= link_to 'Create a new Event', new_event_path %>
-    <% end %>
+    <div>
+      <%= link_to "All Events", root_path %>
+      <% if logged_in? %>
+        <%= " | " %> 
+        <%= link_to 'Create a new Event', new_event_path %>
+        <%= " | " %>
+        <%= link_to 'Invitations', user_invitations_path(current_user.id)%>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>

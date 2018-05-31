@@ -1,6 +1,6 @@
 <h1><%= @event.title %></h1>
 <% if current_user == @event.creator %>
-  <%= link_to "Invite a User" , "#" %>
+  <%= link_to "Invite a User" , new_invitation_path(@event.id) %>
 <% end %>
 <p>Location: <%= @event.location %></p>
 <p>Date: <%= @event.date %></p>
@@ -17,4 +17,15 @@
   </ul>
 <% else %>
   No attendees yet :(
+<% end %>
+
+<h2>Pending invitations:</h2>
+<% if @event.invited_users.any? %>
+  <ul>
+    <% @event.invited_users.each do |attendee| %>
+      <li><%= link_to attendee.name, user_path(attendee) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  No pending invitations
 <% end %>
